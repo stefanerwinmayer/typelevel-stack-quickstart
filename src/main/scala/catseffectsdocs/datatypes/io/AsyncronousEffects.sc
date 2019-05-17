@@ -23,6 +23,7 @@ def delayedTick(d: FiniteDuration)(
   IO.cancelable { cb =>
     val r = new Runnable { def run() = cb(Right()) }
     val f = sc.schedule(r, d.length, d.unit)
+    // Returning a function that can cancel our scheduling
     IO(f.cancel(false))
   }
 }
