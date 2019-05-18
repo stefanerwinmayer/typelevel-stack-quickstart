@@ -5,13 +5,13 @@ import cats.instances.int._
 import cats.instances.string._
 import cats.syntax.eq._
 import cats.syntax.show._
-import sandbox.chapter1introduction.printable.Printable
+import scalawithcats.chapter1introduction.printable.Printable
 
 final case class Cat(name: String, age: Int, color: String)
 
 object Cat {
 
-  import sandbox.chapter1introduction.printable.PrintableInstances._
+  import scalawithcats.chapter1introduction.printable.PrintableInstances._
 
   implicit val catPrintable = new Printable[Cat] {
     def format(cat: Cat): String = {

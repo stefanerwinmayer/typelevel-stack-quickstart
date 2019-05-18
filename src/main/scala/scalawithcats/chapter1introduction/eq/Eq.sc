@@ -6,7 +6,7 @@ import cats.instances.long._
 import cats.instances.option._
 import cats.syntax.eq._
 import cats.syntax.option._
-import sandbox.chapter1introduction.Cat
+import scalawithcats.chapter1introduction.Cat
 
 val eqInt = Eq[Int]
 eqInt.eqv(123, 123)
