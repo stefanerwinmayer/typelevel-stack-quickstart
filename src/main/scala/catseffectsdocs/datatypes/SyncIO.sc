@@ -4,7 +4,7 @@ import cats.effect.{IO, SyncIO}
 def putStrLn(str: String): SyncIO[Unit] = SyncIO(println(str))
 SyncIO.pure("Cats!").flatMap(putStrLn).unsafeRunSync()
 
-val eval = Eval.now("hey!")
+val eval: Eval[String] = Eval.now("hey!")
 SyncIO.eval(eval).unsafeRunSync()
 
 val ioa: SyncIO[Unit] = SyncIO(println("Hello world!"))

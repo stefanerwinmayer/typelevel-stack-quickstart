@@ -1,14 +1,15 @@
-import cats.effect.{Fiber, IO}
+import cats.effect.{ContextShift, Fiber, IO}
+
 import scala.concurrent.ExecutionContext.global
 import cats.implicits._
 
-implicit val ctx = IO.contextShift(global)
+implicit val ctx: ContextShift[IO] = IO.contextShift(global)
 
-val io = IO(println("Hello!"))
+val io: IO[Unit] = IO(println("Hello!"))
 val fiber: IO[Fiber[IO, Unit]] = io.start
 
 val launchMissiles = IO.raiseError(new Exception("boom!"))
-val runToBunker = IO(println("To the bunker!!!"))
+val runToBunker: IO[Unit] = IO(println("To the bunker!!!"))
 for {
   fiber <- launchMissiles.start
   _ <- runToBunker.handleErrorWith { error =>
