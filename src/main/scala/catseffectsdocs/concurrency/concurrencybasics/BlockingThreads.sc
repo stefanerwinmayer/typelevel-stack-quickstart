@@ -10,7 +10,7 @@ val blockingEC =
   ExecutionContext.fromExecutor(Executors.newCachedThreadPool())
 
 def blockingOp(): IO[Unit] =
-  IO(println(s" ${Thread.currentThread().getName}: Do blocking op"))
+  IO(println(s"${Thread.currentThread().getName}: Do blocking op"))
 def doSth(): IO[Unit] =
   IO(println(s"${Thread.currentThread().getName}: Do something"))
 
